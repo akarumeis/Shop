@@ -1,0 +1,44 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'shop.css' %}" rel="stylesheet">
+    <title>Магазин</title>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="title_shop">
+            <h1>Shop</h1>
+        </div>
+        <div class="products">
+            {% for product in products %}
+            <h2>{{ product.title }}</h2>
+            <p ><img class="img" src="{{ product.picture.url }}"></p>
+            <p>{{ product.description }}</p>
+            <h2>Коментарі:</h2>
+            .
+            {% for comment in comments %}
+            <h3>{{ comment.author }}</h3>
+            <p>{{ comment.text }}</p>
+            {% endfor %}
+            <form method="post" enctype="multipart/form-data">
+                <h3>Коментар</h3>
+                {% csrf_token %}
+                <p><input type="text" placeholder="Заголовок" name="author" required maxlength="255"></p>
+                <p><textarea name="text" cols="30" rows="10" placeholder="Контент" required
+                        style="resize: none;"></textarea></p>
+                {% if request.user.is_authenticated %}
+                <p><input type="submit" value="Опублікувати"></p>
+                {% endif %}
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

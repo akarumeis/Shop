@@ -1,0 +1,27 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'log.css' %}" rel="stylesheet">
+    <title>Вхід</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Вхід</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p style="color:red">{{error}}</p>
+            <p><input type="text" placeholder="login" name="login" required></p>
+            <p><input type="password" placeholder="password" name="password" required></p>
+            <div class="buttonDiv">
+                <p><input class="button" type="submit" value="Вхід"></p>
+            </div>
+    </div>
+    </form>
+</body>
+
+</html>
