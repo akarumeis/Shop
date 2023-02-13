@@ -17,23 +17,24 @@
         </div>
         <div class="products">
             {% for product in products %}
-            <h2>{{ product.title }}</h2>
+            <h2 class="title_product">{{ product.title }}</h2>
             <p ><img class="img" src="{{ product.picture.url }}"></p>
-            <p>{{ product.description }}</p>
-            <h2>Коментарі:</h2>
-            .
+            <h3 class="description_title">Опис <p class="product_title">{{ product.title }}</p></h3> 
+            <p class="description">{{ product.description }}</p>
+            <h2 class="comment_list">Коментарі до товару:</h2>
             {% for comment in comments %}
             <h3>{{ comment.author }}</h3>
-            <p>{{ comment.text }}</p>
+            <p class="comment">{{ comment.text }}</p>
+            <hr>
             {% endfor %}
             <form method="post" enctype="multipart/form-data">
                 <h3>Коментар</h3>
                 {% csrf_token %}
-                <p><input type="text" placeholder="Заголовок" name="author" required maxlength="255"></p>
-                <p><textarea name="text" cols="30" rows="10" placeholder="Контент" required
+                <p><input class="create_title_comm" type="text" autocomplete="off" placeholder="Автор" name="author" required maxlength="255"></p>
+                <p><textarea class="text_comm" name="text" cols="30" rows="10" placeholder="Контент" required
                         style="resize: none;"></textarea></p>
                 {% if request.user.is_authenticated %}
-                <p><input type="submit" value="Опублікувати"></p>
+                <p><input type="submit" class="button_comm" autocomplete="off" value="Опублікувати"></p>
                 {% endif %}
             </form>
             {% endfor %}

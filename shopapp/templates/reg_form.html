@@ -6,16 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'reg.css '%}" rel="stylesheet">
-    
+
     <title>Реєстрація</title>
 </head>
 
 <body>
+    <header class="header">
+        <nav>
+            <a href="{% url 'reg_form'%}">Реєстрація</a>
+            <a href="{% url 'log_form'%}">Вхід</a>
+        </nav>
+    </header>
     <div class="content">
         <h1>Реєстрація</h1>
         <form method="post">
             {% csrf_token %}
-            <p><input type="text" placeholder="login" name="login" value="{{login}}" required></p>
+            <p><input type="text" placeholder="login" autocomplete="off" name="login" value="{{login}}" required></p>
             <p><input type="password" placeholder="password" name="password" value="{{password}}" required></p>
             <p><input type="password" placeholder="password confirm" name="password_confirm"
                     value="{{password_confirm}}" required></p>
@@ -23,7 +29,7 @@
                 <p><input class="button" type="submit" value="Реєстрація"></p>
                 <p style="color:rgb(156, 3, 3); font-size: 15px; font-weight: bold;">{{error}}</p>
             </div>
-            
+
         </form>
     </div>
 </body>

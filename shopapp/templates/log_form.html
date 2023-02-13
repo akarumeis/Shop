@@ -10,13 +10,19 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+            <a href="{% url 'reg_form'%}">Реєстрація</a>
+            <a href="{% url 'log_form'%}">Вхід</a>
+        </nav>
+    </header>
     <div class="content">
         <h1>Вхід</h1>
         <form method="post">
             {% csrf_token %}
             <p style="color:red">{{error}}</p>
-            <p><input type="text" placeholder="login" name="login" required></p>
-            <p><input type="password" placeholder="password" name="password" required></p>
+            <p><input type="text" placeholder="login" autocomplete="off" name="login" required></p>
+            <p><input type="password" placeholder="password" autocomplete="off" name="password" required></p>
             <div class="buttonDiv">
                 <p><input class="button" type="submit" value="Вхід"></p>
             </div>
